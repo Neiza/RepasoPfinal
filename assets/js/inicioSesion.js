@@ -4,8 +4,8 @@ var correo = document.getElementById("correo");
 var contraeña = document.getElementById("contraseña")
 
 window.addEventListener("load", function(){
-  correo.disabled = true;
-  contraseña.disabled = true;
+      correo.disabled = true;
+      contraseña.disabled = true;
       registrado.addEventListener("click", function(){
               correo.disabled = false;
               contraseña.disabled = false;
@@ -13,6 +13,6 @@ window.addEventListener("load", function(){
       });
 
       registrate.addEventListener("click", function(){
-          window.location = "registro.html"
+              window.location = "registro.html"
       });
 });
