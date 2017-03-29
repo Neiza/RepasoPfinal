@@ -62,7 +62,6 @@ function validarEmailPassword(){
 }
 
 
-
 window.addEventListener("load",function(){
       validarNombreApellido();
       botonRegistro.addEventListener("click", function(event){
