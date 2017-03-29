@@ -8,7 +8,18 @@ var spanApellido = document.getElementById("spanLastName");
 var spanEmail = document.getElementById("spanEmail");
 var spanPassword = document.getElementById("spanPassword");
 
-var botonRegistro = document.getElementById("registro");
+var botonGuardar = document.getElementById("guardar");
+
+
+function edit(){
+        var objectCoder = JSON.parse(localStorage.getItem("nuevoCoder"));
+        console.log(objectCoder);
+        inputNombre.value = objectCoder.nombre;
+        inputApellido.value = objectCoder.apellido;
+        inputEmail.value = objectCoder.email;
+        inputPassword.value = objectCoder.password;
+        inputNombre.focus();
+}
 
 function ObjetoCoder(nombre, apellido, email, password){
         this.nombre = nombre;
@@ -59,25 +70,28 @@ function validarEmailPassword(){
              	}*/
 }
 
-
 window.addEventListener("load",function(){
       validarNombreApellido();
-      botonRegistro.addEventListener("click", function(event){
+      edit();
+      botonGuardar.addEventListener("click", function(event){
             event.preventDefault();
-            validarEmailPassword();
-            ObjetoCoder(nombre,apellido,email,password);
-            new ObjetoCoder (inputNombre.value, inputApellido. value, inputEmail.value, inputPassword.value);
-            if(nombre.length!=0 && apellido.length!=0 && email.length!=0 && password.length!=0){
-              new ObjetoCoder (inputNombre.value, inputApellido. value, inputEmail.value, inputPassword.value);
-            console.log(new ObjetoCoder(inputNombre.value, inputApellido.value, inputEmail.value, inputPassword.value))
-			      localStorage.setItem("nuevoCoder",JSON.stringify(new ObjetoCoder(inputNombre.value,inputApellido.value,inputEmail.value,inputPassword.value)))
-		        document.getElementById("form").reset();
-            window.location = "bienvenidaCoder.html"
-            }
-            else{
-              alert("LLenar todos los campos")
-            }
+              validarEmailPassword();
+              ObjetoCoder(nombre,apellido,email,password);
+                var nombre = inputNombre.value;
+                var apellido = inputApellido.value;
+                var email = inputEmail.value;
+                var password = inputPassword.value ;
+
+                if(nombre.length!=0 && apellido.length!=0 && email.length!=0 && password.length!=0){
+                    console.log(new ObjetoCoder(nombre,apellido,email,password))
+                    localStorage.setItem("nuevoCoder",JSON.stringify(new ObjetoCoder(nombre,apellido,email,password)))
+        		        document.getElementById("form").reset();
+                    window.location = "bienvenidaCoder.html"
+                }
+                else {
+                    alert("LLenar todos los campos")
+                }
+
 
       });
-
 });
